@@ -7,13 +7,11 @@ html, body {
   padding: 1.5rem;
 }
 
+
 .table th {
   width: 30%;
 }
 
-.table.is-home {
-  margin-bottom: 0;
-}
 
 .container.is-standard {
   max-width: 960px;
@@ -23,13 +21,22 @@ html, body {
   max-width: 640px;
 }
 
+
 form .field + .field {
   margin-top: 1.5rem;
 }
 
-.sessionNew-wrapper {
-  align-items: center;
+
+.flex-container {
   display: flex;
+}
+
+.flex-container.is-align-center {
+  align-items: center;
   height: 100%;
 }
 
+
+.navbar-item.has-dropdown > .navbar-link{
+  min-width: 160px;
+}
