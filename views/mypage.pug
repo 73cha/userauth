@@ -17,7 +17,9 @@ block content
     main.section.content
       .container.is-standard
         if message
-          .notification.is-success= message
+          .notification.is-success
+            button.delete
+            = message
 
         P
           span.fa.fa-info-circle.has-text-success

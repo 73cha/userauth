@@ -12,7 +12,9 @@ block content
   main.section.content
     .container.is-standard
       if message
-        .notification.is-success= message
+        .notification.is-success
+          button.delete
+          = message
 
       h2.title.has-text-weight-bold
         | これは何？

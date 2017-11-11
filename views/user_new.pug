@@ -4,7 +4,9 @@ block content
   main.section.content.sessionNew-wrapper
     .container.is-small
       if message
-        .notification.is-danger= message
+        .notification.is-danger
+          button.delete
+          = message
 
       h1.title.has-text-centered.has-text-primary
         | USERAUTH APP
