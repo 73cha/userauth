@@ -1,12 +1,11 @@
 extends layout_header_only
+include ./mixins/flash
 
 block content
   main.section.content.flex-container.is-align-center
     .container.is-small
-      if message
-        .notification.is-danger
-          button.delete
-          = message
+      if flash 
+        +flash(flash.state, flash.message)
 
       h1.title.has-text-centered.has-text-primary
         | USERAUTH APP

@@ -1,4 +1,5 @@
 extends layout
+include ./mixins/flash
 
 block content
   .hero.is-light
@@ -11,10 +12,8 @@ block content
 
   main.section.content
     .container.is-standard
-      if message
-        .notification.is-success
-          button.delete
-          = message
+      if flash
+        +flash(flash.state, flash.message)
 
       h2.title.has-text-weight-bold
         | これは何？

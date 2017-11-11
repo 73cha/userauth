@@ -37,16 +37,16 @@ module.exports = (() => {
         }
 
         if (!res) {
-          return  callback(null, false, setFlash(req, flashMessage.incorrectPassword))
+          return  callback(null, false, setFlash(req, 'is-danger', flashMessage.incorrectPassword))
         }
 
-        return callback(null, user, setFlash(req, flashMessage.loginSuccess));
+        return callback(null, user, setFlash(req, 'is-success', flashMessage.loginSuccess));
       });
     })
     .catch((err) => {
       console.log(err);
 
-      return callback(null, false, setFlash(req, flashMessage.worngUsername));
+      return callback(null, false, setFlash(req, 'is-danger', flashMessage.worngUsername));
     });
   });
 })();

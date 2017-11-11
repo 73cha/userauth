@@ -6,7 +6,7 @@ const getFlash = require('../util/get_flash.js');
 router.get('/', (req, res, next) => {
   res.render('mypage', {
     title: 'マイページ',
-    message: getFlash(req),
+    flash: getFlash(req),
     user: req.user
   });
 });

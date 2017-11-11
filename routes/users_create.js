@@ -23,7 +23,7 @@ router.post('/', (req, res, next) => {
       password_hash: hash
     })
     .then((user) => {
-      setFlash(req, flashMessage.createUser);
+      setFlash(req, 'is-success', flashMessage.createUser);
 
       req.login(user, (err) => {
         if (err) {
@@ -36,14 +36,14 @@ router.post('/', (req, res, next) => {
     .catch((err) => {
       console.log(err)
 
-      setFlash(req, flashMessage.existUser);
+      setFlash(req, 'is-danger', flashMessage.existUser);
       res.redirect('/users/new');
     });
   })
   .catch((err) => {
       console.log(err)
 
-      setFlash(req, flashMessage.failCreateUser);
+      setFlash(req, 'is-danger', flashMessage.failCreateUser);
       res.redirect('/users/new');
   });
 });

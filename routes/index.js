@@ -6,7 +6,7 @@ const getFlash = require('../util/get_flash.js');
 router.get('/', (req, res, next) => {
   res.render('index', {
     title: 'ようこそ',
-    message: getFlash(req),// ログアウトのflash
+    flash: getFlash(req),// ログアウトのflash
     user: req.user
   });
 });

@@ -16,7 +16,7 @@ router.get('/:id', (req, res, next) => {
     .then((deleted) => {
       console.log(deleted);
 
-      setFlash(req, sucessWithdrawal);
+      setFlash(req, 'is-success', flashMessage.sucessWithdrawal);
       // ログアウトさせないと、Passportがセッションを
       // 維持しようとしてセッションIDからユーザーを探してくるため
       // エラーになってしまう
@@ -26,14 +26,14 @@ router.get('/:id', (req, res, next) => {
     .catch((err) => {
       console.log(err);
 
-      setFlash(req, failWithdrawal);
+      setFlash(req, 'is-danger', flashMessage.failWithdrawal);
       res.redirect('/mypage');
     });
   })
   .catch((err) => {
     console.log(err);
 
-    setFlash(req, flashMessage.notFoundUser);
+    setFlash(req, 'is-danger', flashMessage.notFoundUser);
     res.redirect('/mypage');
   });
 

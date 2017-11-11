@@ -5,7 +5,7 @@ const flashMessage = 'ログアウトしました';
 
 
 router.get('/', (req, res, next) => {
-  setFlash(req, flashMessage);
+  setFlash(req, 'is-success', flashMessage);
   req.logout();
   res.redirect('/');
 });
