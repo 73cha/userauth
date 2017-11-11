@@ -2,6 +2,17 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  // Delete for .notification
+ 
+  document.querySelectorAll('.delete').forEach(function(elm) {
+    elm.addEventListener('click', function(ev) {
+      var target = ev.target.closest('.notification');
+      if (target) {
+        target.parentNode.removeChild(target);
+      }
+    });
+  });
+
   // Dropdowns
 
   var $metalinks = getAll('#meta a');
