@@ -1,0 +1,5 @@
+# username      ... データベースのユーザー名
+# password      ... データベースのユーザのパスワード
+# host          ... データベースのホスト名 ポートは必要があれば変更する
+# database_name ... データベースの名前
+export DATABASE_URL=postgres://[username]:[password]@[host:5432]/[database_name]

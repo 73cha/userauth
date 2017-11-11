@@ -1,0 +1,41 @@
+extends layout_header_only
+
+block content
+  main.section.content.sessionNew-wrapper
+    .container.is-small
+      if message
+        .notification.is-danger= message
+
+      h1.title.has-text-centered.has-text-primary
+        | USERAUTH APP
+      p
+        | 半角の英数字、記号が使えます。
+        | パスワードは最低限、英字・数字・記号を1種類ずつ含んでください。
+        | 使える記号は次のとおりです。
+        code
+          | !"#$%&@'()*+,-./_
+
+      form(action="/user/new" method="post")
+        .field
+          label.label
+            | ユーザー名
+          .control.has-icons-left.has-icons-right
+            input.input.is-medium(type="text" name="name" placeholder="入力例： sample_123" pattern="^[0-9a-zA-Z!&quot;#$%&amp;@'()*+,./_-]{1,}$" required)
+            span.icon.is-small.is-left
+              i.fa.fa-user
+          p.help
+            | 1文字以上で入力してください。
+
+        .field
+          label.label
+            | パスワード
+          .control.has-icons-left.has-icons-right
+            input.input.is-medium(type="password" name="password" placeholder="入力例： aA!12345" pattern="^(?=.*?[0-9])(?=.*?[a-zA-Z])(?=.*?[!-/@_])[A-Za-z!-9@_]{8,32}$" required)
+            span.icon.is-small.is-left
+              i.fa.fa-key
+          p.help
+            | 8~32文字までの長さで入力してください
+
+        .field
+          .control
+            input.button.is-primary.is-medium(type="submit" value="登録")

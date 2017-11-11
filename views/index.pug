@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  .hero.is-light
+    .hero-body
+      .container.has-text-centered
+        h1.title
+          | ユーザー認証アプリ
+        p
+          | Express, Passportを使っています。
+
+  main.section.content
+    .container.is-standard
+      if message
+        .notification.is-success= message
+
+      h2.title.has-text-weight-bold
+        | これは何？
+      p
+        | 学習とポートフォリオを兼ねて作ったユーザー認証アプリです。
+        | 以下のソフトウェアを使っています。
+
+      table.table.is-striped.is-home
+        tr
+          th
+            | アプリケーションサーバー
+          td
+            | Express
+        tr
+          th
+            | データベース
+          td 
+           | PostgreSQL
+        tr
+          th
+            | ORM
+          td 
+           | Sequelize
+        tr
+          th
+            | ユーザー認証
+          td
+            | Passport
+        tr
+          th
+            | テンプレート
+          td
+            | Pug

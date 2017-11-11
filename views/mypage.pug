@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  if !user
+    p
+      a(href="/session/new")
+        | ログイン。
+      | してください。
+  else
+    .hero.is-light
+      .hero-body
+        .container.has-text-centered
+          h1.title
+            | マイページ
+          p= `ようこそ、${user.name}さん`
+
+    main.section.content
+      .container.is-standard
+        if message
+          .notification.is-success= message
+
+        P
+          span.fa.fa-info-circle.has-text-success
+          |  ユーザー情報を変更するには
+          a(href="#")
+            | こちら
+          | から変更できます。
+
+        p
+          span.fa.fa-exclamation-triangle.has-text-warning
+          |  退会は
+          a(href=`/user/delete?user=${user.name}`)
+            | こちら
+          | です。

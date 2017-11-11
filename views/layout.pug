@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title= `${title} | memo-app`
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/bulma.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header.navbar.is-dark
+      .navbar-brand
+        a.navbar-item.is-size-5(href="/")
+          | USERAUTH APP
+
+      .navbar-menu
+        .navbar-end
+          if user
+            .navbar-item.has-dropdown.is-hoverable
+              a.navbar-link= user.name
+
+              .navbar-dropdown.is-boxed
+                a.navbar-item(href="/")
+                  | ホーム
+                a.navbar-item(href="/mypage")
+                  | マイページ
+                a.navbar-item(href="/session/delete")
+                  | ログアウト
+          else
+            .navbar-item
+              a.navba-link.has-text-white(href="/user/new")
+                | サインアップ
+            .navbar-item
+              a.navba-link.has-text-white(href="/session/new")
+                | ログイン
+
+    block content
+
+    footer#pageFooter.has-text-centered.has-text-grey-light
+      | Made by Katsuhisa Namizaki. 

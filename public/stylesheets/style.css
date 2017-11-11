@@ -1,0 +1,35 @@
+html, body {
+  height: 100%;
+}
+
+#pageFooter {
+  border-top: solid 1px #eee;
+  padding: 1.5rem;
+}
+
+.table th {
+  width: 30%;
+}
+
+.table.is-home {
+  margin-bottom: 0;
+}
+
+.container.is-standard {
+  max-width: 960px;
+}
+
+.container.is-small {
+  max-width: 640px;
+}
+
+form .field + .field {
+  margin-top: 1.5rem;
+}
+
+.sessionNew-wrapper {
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+
