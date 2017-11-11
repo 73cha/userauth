@@ -14,7 +14,7 @@ const index = require('./routes/index.js');
 
 const usersNew = require('./routes/users_new.js');
 const usersCreate = require('./routes/users_create.js');
-const usersDelete = require('./routes/users_create.js');
+const usersDelete = require('./routes/users_delete.js');
 const sessionNew = require('./routes/session_new.js');
 const sessionCreate = require('./routes/session_create.js');
 const sessionDelete = require('./routes/session_delete.js');
@@ -39,16 +39,14 @@ passport.serializeUser((user, cb) => {
 // セッションを持続するために、シリアライズされてセッションID
 // に保存されたuser.idをデシリアライズしてレコードを探してユーザーを特定する
 passport.deserializeUser((id, cb) => {
-  User.findOne({
-    where: { id: id }
-  })
+  User.findById(id)
   .then((res) => {
     let user = res.dataValues;
 
     cb(null, user);
   })
   .catch((err) => {
-    console.log(error);
+    console.log(err);
 
     cb(err);
   });
@@ -70,7 +68,7 @@ app.use(passport.session());
 app.use('/', index);
 app.use('/users/new', usersNew);
 app.use('/users', usersCreate);
-app.use('/users/destroy/:name', usersDelete);
+app.use('/users/destroy', usersDelete);
 app.use('/session/new', sessionNew);
 app.use('/session', sessionCreate);
 app.use('/session/destroy', sessionDelete);
