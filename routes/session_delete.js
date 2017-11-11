@@ -4,7 +4,7 @@ const setFlash = require('../util/set_flash.js');
 const flashMessage = 'ログアウトしました';
 
 
-router.get('/delete', (req, res, next) => {
+router.get('/', (req, res, next) => {
   setFlash(req, flashMessage);
   req.logout();
   res.redirect('/');

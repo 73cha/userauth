@@ -1,7 +1,7 @@
 extends layout_header_only
 
 block content
-  main.section.content.sessionNew-wrapper
+  main.section.content.flex-container.is-align-center
     .container.is-small
       if message
         .notification.is-danger
@@ -17,7 +17,7 @@ block content
         code
           | !"#$%&@'()*+,-./_
 
-      form(action="/user/new" method="post")
+      form(action="/users" method="post")
         .field
           label.label
             | ユーザー名

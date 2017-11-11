@@ -11,7 +11,7 @@ const flashMessage = {
 };
 
 
-router.post('/new', (req, res, next) => {
+router.post('/', (req, res, next) => {
   bcrypt.hash(req.body.password, saltRounds)
   .then((hash) => {
     if (!hash) {
@@ -37,14 +37,14 @@ router.post('/new', (req, res, next) => {
       console.log(err)
 
       setFlash(req, flashMessage.existUser);
-      res.redirect('/user/new');
+      res.redirect('/users/new');
     });
   })
   .catch((err) => {
       console.log(err)
 
       setFlash(req, flashMessage.failCreateUser);
-      res.redirect('/user/new');
+      res.redirect('/users/new');
   });
 });
 

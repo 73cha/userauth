@@ -1,7 +1,7 @@
 extends layout_header_only
 
 block content
-  main.section.content.sessionNew-wrapper
+  main.section.content.flex-container.is-align-center
     .container.is-small
       if message
         .notification.is-danger
@@ -11,7 +11,7 @@ block content
       h1.title.has-text-centered.has-text-primary
         | USERAUTH APP
 
-      form(action="/session/new" method="post")
+      form(action="/session" method="post")
         .field
           label.label
             | ユーザー名

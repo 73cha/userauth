@@ -3,8 +3,8 @@ const router = express.Router();
 const getFlash = require('../util/get_flash.js');
 
 
-router.get('/new', (req, res, next) => {
-  res.render('user_new', {
+router.get('/', (req, res, next) => {
+  res.render('users_new', {
     title: 'サインアップ',
     message: getFlash(req)
   });

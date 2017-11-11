@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 
 
-router.post('/new',
+router.post('/',
   passport.authenticate('local', {
     failureRedirect: '/session/new'
   }), (req, res) => {

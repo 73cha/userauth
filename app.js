@@ -11,8 +11,10 @@ const User = require('./models/index')['user'];
 const localStrategy = require('./passport/strategy.js');
 
 const index = require('./routes/index.js');
-const userNew = require('./routes/user_new.js');
-const userCreate = require('./routes/user_create.js');
+
+const usersNew = require('./routes/users_new.js');
+const usersCreate = require('./routes/users_create.js');
+const usersDelete = require('./routes/users_create.js');
 const sessionNew = require('./routes/session_new.js');
 const sessionCreate = require('./routes/session_create.js');
 const sessionDelete = require('./routes/session_delete.js');
@@ -66,11 +68,13 @@ app.use(passport.session());
 
 
 app.use('/', index);
-app.use('/user', userNew);
-app.use('/user', userCreate);
-app.use('/session', sessionNew);
+app.use('/users/new', usersNew);
+app.use('/users', usersCreate);
+app.use('/users/destroy/:name', usersDelete);
+app.use('/session/new', sessionNew);
 app.use('/session', sessionCreate);
-app.use('/session', sessionDelete);
+app.use('/session/destroy', sessionDelete);
+
 app.use('/mypage', isAuthenticated, mypage);
 
 
