@@ -14,10 +14,6 @@ const flashMessage = {
 router.post('/', (req, res, next) => {
   bcrypt.hash(req.body.password, saltRounds)
   .then((hash) => {
-    if (!hash) {
-      return Promise.reject();
-    }
-
     User.create({
       name: req.body.name,
       password_hash: hash
