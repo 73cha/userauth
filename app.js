@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const helmet = require('helmet');
 const passport = require('passport');
 const flash = require('connect-flash');
 const path = require('path');
@@ -68,6 +69,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+app.use(helmet());
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
@@ -83,7 +85,7 @@ app.use('/users', csrfProtection, usersCreate);
 app.use('/users/edit', csrfProtection, isAuthenticated, usersEdit);
 app.use('/users/update', csrfProtection, isAuthenticated, usersUpdate);
 app.use('/users/destroy', csrfProtection, isAuthenticated, usersDelete);
-app.use('/mypage', isAuthenticated, mypage);
+app.use('/mypage', csrfProtection, isAuthenticated, mypage);
 
 
 app.use((req, res, next) => {
