@@ -7,8 +7,10 @@ block content
       if flash 
         +flash(flash.state, flash.message)
 
-      h1.title.has-text-centered.has-text-primary
+      h1.title.has-text-centered.has-text-success
         | USERAUTH APP
+      p
+        | ログインします。ユーザー名とパスワードを入力してください。
 
       form(action="/session" method="post")
         .field
@@ -29,4 +31,4 @@ block content
 
         .field
           .control
-            input.button.is-primary.is-medium(type="submit" value="ログイン")
+            input.button.is-success.is-medium(type="submit" value="ログイン")

@@ -2,15 +2,15 @@
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const hashPasswordHook = (user, options) => {
-  bcrypt.hash(user.get('password'), saltRounds, (err, hash) => {
-    if (err) {
-      console.log(err);
-    }
-
-    user.set('password_hash', hash);
-  });
-};
+// const hashPasswordHook = (user, options) => {
+//   bcrypt.hash(user.get('password'), saltRounds, (err, hash) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//
+//     user.set('password_hash', hash);
+//   });
+// };
 
 
 module.exports = (sequelize, DataTypes) => {

@@ -13,6 +13,8 @@ const localStrategy = require('./passport/strategy.js');
 const index = require('./routes/index.js');
 
 const usersNew = require('./routes/users_new.js');
+const usersEdit = require('./routes/users_edit.js');
+const usersUpdate = require('./routes/users_update.js');
 const usersCreate = require('./routes/users_create.js');
 const usersDelete = require('./routes/users_delete.js');
 const sessionNew = require('./routes/session_new.js');
@@ -66,9 +68,11 @@ app.use(passport.session());
 
 
 app.use('/', index);
+app.use('/users/edit', isAuthenticated, usersEdit);
+app.use('/users/update', isAuthenticated, usersUpdate);
 app.use('/users/new', usersNew);
 app.use('/users', usersCreate);
-app.use('/users/destroy', usersDelete);
+app.use('/users/destroy', isAuthenticated, usersDelete);
 app.use('/session/new', sessionNew);
 app.use('/session', sessionCreate);
 app.use('/session/destroy', sessionDelete);
