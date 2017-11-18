@@ -6,6 +6,7 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
+const csrf = require('csurf')
 const bodyParser = require('body-parser');
 const User = require('./models/index')['user'];
 const localStrategy = require('./passport/strategy.js');
@@ -23,6 +24,7 @@ const sessionDelete = require('./routes/session_delete.js');
 const mypage = require('./routes/mypage.js');
 
 const isAuthenticated = require('./util/is_authenticated.js');
+const csrfProtection = csrf({ cookie: true })
 
 const app = express();
 
@@ -73,15 +75,14 @@ app.use(passport.session());
 
 
 app.use('/', index);
-app.use('/users/edit', isAuthenticated, usersEdit);
-app.use('/users/update', isAuthenticated, usersUpdate);
-app.use('/users/new', usersNew);
-app.use('/users', usersCreate);
-app.use('/users/destroy', isAuthenticated, usersDelete);
-app.use('/session/new', sessionNew);
-app.use('/session', sessionCreate);
-app.use('/session/destroy', sessionDelete);
-
+app.use('/session/new', csrfProtection, sessionNew);
+app.use('/session', csrfProtection, sessionCreate);
+app.use('/session/destroy', csrfProtection, sessionDelete);
+app.use('/users/new', csrfProtection, usersNew);
+app.use('/users', csrfProtection, usersCreate);
+app.use('/users/edit', csrfProtection, isAuthenticated, usersEdit);
+app.use('/users/update', csrfProtection, isAuthenticated, usersUpdate);
+app.use('/users/destroy', csrfProtection, isAuthenticated, usersDelete);
 app.use('/mypage', isAuthenticated, mypage);
 
 

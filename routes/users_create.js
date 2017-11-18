@@ -19,13 +19,12 @@ router.post('/', (req, res, next) => {
       password_hash: hash
     })
     .then((user) => {
-      setFlash(req, 'is-success', flashMessage.createUser);
-
       req.login(user, (err) => {
         if (err) {
           return next();
         }
 
+        setFlash(req, 'is-success', flashMessage.createUser);
         res.redirect('/mypage');
       });
     })

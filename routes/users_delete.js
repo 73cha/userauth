@@ -36,7 +36,6 @@ router.get('/:id', (req, res, next) => {
     setFlash(req, 'is-danger', flashMessage.notFoundUser);
     res.redirect('/mypage');
   });
-
 });
 
 

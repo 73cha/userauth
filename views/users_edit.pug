@@ -27,6 +27,9 @@ block content
 
         form(action=`/users/update/${user.id}` method="post")
           .field
+            input.input(type="hidden" name="_csrf" value=`${csrfToken}`)
+
+          .field
             label.label
               | ユーザー名
             .control.has-icons-left.has-icons-right

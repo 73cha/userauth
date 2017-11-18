@@ -7,6 +7,7 @@ router.get('/:id', (req, res, next) => {
   res.render('users_edit', {
     title: 'ユーザー情報編集',
     flash: getFlash(req),
+    csrfToken: req.csrfToken(),
     user: req.user
   });
 });
